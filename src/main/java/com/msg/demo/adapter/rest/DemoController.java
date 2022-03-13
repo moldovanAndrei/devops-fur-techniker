@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 @RequestMapping("/v1/hello/")
-public class DummyController {
+public class DemoController {
 
     @GetMapping
     public String sayHello(@RequestParam String name) {
