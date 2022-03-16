@@ -1,0 +1,20 @@
+Ex. 1: Prometheus + Grafana Demo
+
+	Add Repos and install Prometheus + Grafana:
+		> helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+		> helm repo add stable https://charts.helm.sh/stable
+		> helm repo update
+
+		> helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
+	
+	Check deployed resources:
+		> kubectl get pods -n monitoring
+		> kubectl get svc -n monitoring
+	
+	Connect to grafana:
+		> kubectl port-forward deployment/prometheus-grafana -n monitoring 3000
+		Try: localhost:3000
+			- username: admin
+			- password: prom-operator
+
+	Go To: Dashboard -> Browse -> "Kubernetes / Compute Resources / Cluster"

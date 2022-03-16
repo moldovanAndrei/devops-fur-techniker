@@ -1,0 +1,34 @@
+Ex. 5: Ingress Demo
+	Install ingress:
+	helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
+
+	Got to kubernetes folder and create service and deployment:
+	> kubectl create -f spring-deployment.yaml
+	> kubectl create -f spring-service-clusterip.yaml
+
+	Check resources:
+	> kubectl get svc
+	> kubectl get pods
+
+	Create Ingress Route:
+	> kubectl create -f spring-ingress.yaml
+	> kubectl get ingress spring-app
+	> kubectl describe ingress spring-app
+
+	Test: http://localhost/apis/demo/swagger-ui.html
+
+	Check ingress pod logs:
+	> kubectl get pods -n ingress-nginx
+	> kubectl logs -n ingress-nginx INGRESS_POD_NAME
+	------------------------------------------------
+	
+	Ingress with Helm:
+	- set ingress.enables = true in values.yaml
+	> helm install spring-release spring-chart
+	
+	Check Resources:
+	> kubectl get svc
+	> kubectl get pods
+	> kubectl get ingress
+	
+	Test: http://localhost/apis/demo/swagger-ui.html

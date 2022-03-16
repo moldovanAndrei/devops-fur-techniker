@@ -1,0 +1,53 @@
+Ex. 4: Spring Boot Docker Demo
+
+Ex. 4.1: Run the application from Andrei's docker.io repository
+	> docker run docker.io/deiandrei/devops-fur-techniker:0.0.1
+	Try: http://localhost:8091/apis/demo/swagger-ui.html
+	
+	> docker run -p 8091:8091 docker.io/deiandrei/devops-fur-techniker:0.0.1
+	http://localhost:8091/apis/demo/swagger-ui.html
+	
+Ex. 4.2: Building and running your Spring Boot Application
+	a) Run the application
+		Build:
+		> docker build -t msg-demo:1.0.0-SNAPSHOT .
+		Check Image:
+		> docker image ls
+		Create and run a container:
+		> docker run -p 58091:8091 msg-demo:1.0.0-SNAPSHOT
+		
+		Try: http://localhost:58091/apis/demo/swagger-ui.html
+		
+		> ctrl + c
+		> docker ps -a
+	
+	b) Restart the application in detached mode
+		> docker start CONTAINER_ID
+		> docker ps -a
+	
+	c) Check logs:
+		> docker logs CONTAINER_ID
+		> docker logs --follow CONTAINER_ID
+		
+		Try: http://localhost:58091/apis/demo/swagger-ui.html
+		> ctrl + c
+	
+	d) Delete container and rerun in detached mode
+		> docker ps -a
+		> docker rm CONTAINER_ID
+			=> error
+		
+		> docker rm -f CONTAINER_ID
+		> docker ps -a
+		
+Bonus: Retag and push the image to Andrei's Docker Registry
+		> docker tag msg-demo:1.0.0-SNAPSHOT docker.io/deiandrei/devops-fur-techniker:1.0.0
+		> docker push docker.io/deiandrei/devops-fur-techniker:1.0.0
+		
+		> docker login
+		Check User:
+		> docker info | sed '/Username:/!d;s/.* //'
+		
+		> docker push docker.io/deiandrei/devops-fur-techniker:1.0.0
+		> docker run -d -p 58091:8091 docker.io/deiandrei/devops-fur-techniker:1.0.0
+ 

@@ -1,0 +1,58 @@
+Ex. 1: Kubectl, Namespaces and Pods
+
+	Check kubectl version + server connection
+	> kubectl version
+	> kubectl config current-context
+	
+	Namespaces:
+	> kubectl get ns
+
+	> kubectl create namespace workshop
+	> kubectl get ns
+
+	> kubectl describe ns workshop
+	> kubectl get -o yaml ns workshop
+
+	> kubectl config set-context --current --namespace workshop 
+	
+	Pod:
+	> cd devops-fur-techniker/kubernetes
+	
+	> kubectl create -f spring-pod.yaml
+	> kubectl get pods
+
+	> kubectl describe pod spring-app
+	> kubectl logs spring-pod
+	
+	> kubectl exec -it spring-app -- sh
+	> ls
+	> exit
+	
+	> kubectl delete pod spring-app
+	> kubectl get pods
+
+Ex. 2: ReplicaSets and Deployments
+
+	ReplicaSet:
+	> kubectl create -f spring-pod.yaml
+	> kubectl get pods
+	
+	> kubectl create -f spring-replicaset.yaml
+	> kubectl get pods
+	
+	> kubectl delete pod spring-app
+	> kubectl get pods
+	
+	> kubectl delete replicaset spring-app
+	> kubectl get pods
+	
+	Deployments:
+	> kubectl create -f spring-deployment.yaml
+	> kubectl get deployments
+	> kubectl get pods
+	
+	> kubectl scale deployment spring-app --replicas 5
+	> kubectl get pods	
+	
+	> kubectl edit deployment spring-app
+		=> set replicas back to 3

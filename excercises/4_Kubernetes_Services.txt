@@ -1,0 +1,30 @@
+Ex. 3: Service IP Demo
+	
+	Get Pod IPs:
+	> kubectl get pods
+	> kubectl get pods -o wide
+	
+	1. Service ClusterIP:
+		> kubectl create -f spring-service-clusterip.yaml
+		> kubectl get svc
+	
+		Try: http://localhost:58091/apis/demo/swagger-ui.html
+		=> error
+		
+		Port Forward the service:
+		> kubectl port-forward svc/spring-app-clusterip 58091
+	
+		Try: http://localhost:58091/apis/demo/swagger-ui.html
+		Send one message via swagger (Only one!!!)
+	
+		Check logs:
+		> kubectl get pods
+		> kubectl logs pod-1
+		> kubectl logs pod-2
+		> kubectl logs pod-3
+	
+	2. Service NodePort:
+		> kubectl create -f spring-service-nodeport.yaml
+		> kubectl get svc
+	
+		Access: http://localhost:30091/apis/demo/swagger-ui.html

@@ -1,0 +1,33 @@
+Docker CLI:
+Ex. 1: Docker Hello World
+	> docker version
+	> docker run hello-world
+	> docker ps -a
+	> docker rm CONTAINER_ID
+	> docker ps -a
+
+Ex. 2: Docker Image Demo
+	> docker image ls
+	> docker image rm IMAGE_NAME
+	> docker run hello-world
+	
+	> docker image rm IMAGE_NAME
+	> docker image ls
+	> docker run docker.io/hello-world
+
+Ex. 3: Docker Container Lifecycle
+	> docker create hello-world
+	> docker ps -a
+	> docker start CONTAINER_ID
+	> docker ps -a
+	> docker start -a CONTAINER_ID
+	> docker ps -a 
+	> docker rm CONTAINER_ID
+	
+Bonus: Container IDs
+	> docker create hello-world
+	> docker ps -a
+	> docker ps -a --no-trunc
+	> docker run FULL_CONTAINER_ID
+	> docker run TRUNC_CONTAINER_ID
+	> docker rm CONTAINER_ID

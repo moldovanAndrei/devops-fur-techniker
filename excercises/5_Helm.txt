@@ -1,0 +1,47 @@
+Ex. 4: Helm Demo
+	Check chart under devops-fur-techniker/helm
+	
+	Cleanup:
+		> kubectl delete deployment spring-app
+		> kubectl get pods
+	
+		> kubectl delete svc --all
+		> kubectl get svc
+	
+	Check Helm:
+		> helm verison
+		> helm list
+
+	Install Chart:
+		> cd devops-fur-techniker/helm/
+		> helm install spring-release spring-chart 
+		> helm list
+	
+	Check Resources:
+		> kubectl get deployments
+		> kubectl get pods
+		> kubectl get svc
+	
+	Forward port:
+		> kubectl port-forward svc/spring-release-spring-chart 58091:1234
+		Try: http://localhost:SVC_NODE_PORT/apis/demo/swagger-ui.html
+	
+	Lets Break it:
+	> helm history spring-release
+	
+	- Modify image tag in spring-chart values.yaml file
+	
+	> helm upgrade spring-release spring-chart
+	> helm history spring release
+	
+	> kubectl get pods
+	
+	> helm rollback spring-release 1
+	> helm history
+	
+	> kubectl get pods
+	
+	> helm delete spring-release
+	> helm list
+
+	!Remember to fix image tag 
