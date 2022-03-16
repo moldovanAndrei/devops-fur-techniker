@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app
+  labels:
+    app: spring-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: spring-pod-container
+          image: deiandrei/devops-fur-techniker:0.0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8091
+              protocol: TCP
+              name: spring-app-port

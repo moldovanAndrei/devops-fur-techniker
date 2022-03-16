@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spring-app
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: localhost
+    http:      
+      paths:
+      - path: /apis/demo
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: spring-app-clusterip
+            port:
+              number: 58091
