@@ -9,7 +9,7 @@ Ex. 4: Helm Demo
 		> kubectl get svc
 	
 	Check Helm:
-		> helm verison
+		> helm version
 		> helm list
 
 	Install Chart:
@@ -32,7 +32,7 @@ Ex. 4: Helm Demo
 	- Modify image tag in spring-chart values.yaml file
 	
 	> helm upgrade spring-release spring-chart
-	> helm history spring release
+	> helm history spring-release
 	
 	> kubectl get pods
 	
