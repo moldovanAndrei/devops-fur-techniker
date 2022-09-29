@@ -22,7 +22,7 @@ Ex. 1: Kubectl, Namespaces and Pods
 	> kubectl get pods
 
 	> kubectl describe pod spring-app
-	> kubectl logs spring-pod
+	> kubectl logs spring-app
 	
 	> kubectl exec -it spring-app -- sh
 	> ls
